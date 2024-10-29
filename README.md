@@ -4,7 +4,12 @@
 
 Continue and complete the developments of a web app that follows multiple requirements.
 
-### ThAmCo.Catering
+## ThAmCo.Catering
 
 I am currently working on the catering web service part of the project.  
-I am working on creating the databases for the solution.  
+
+### Database Classes
+
+Working on creating each class for the catering database(db)  
+Trying to define the many-to-one relationships has proven dificult between the classes.
+I have been making use of AI (Microsoft Copilot) to try and understand the relationships.  
