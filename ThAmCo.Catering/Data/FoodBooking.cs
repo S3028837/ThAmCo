@@ -12,7 +12,7 @@ namespace ThAmCo.Catering.Data
         public int MenuId { get; set; }
 
         //Many to one reationship to Menu
-        public List<Menu>? Menus { get; set; }
+        public Menu? Menu { get; set; }
         //one to one relationship to Event
         //public Event? Event { get; set; }
     }

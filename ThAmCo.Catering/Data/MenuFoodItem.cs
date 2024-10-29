@@ -7,9 +7,9 @@
         public int FoodItemID { get; set; }
 
         //Many to one relationship to FoodItem
-        public List<FoodItem>? FoodItems { get; set; }
+        public FoodItem? FoodItem { get; set; }
 
         //Many to one relationship to Menu
-        public List<Menu>? Menus { get; set; }
+        public Menu? Menu { get; set; }
     }
 }

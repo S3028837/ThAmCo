@@ -11,8 +11,8 @@ namespace ThAmCo.Catering.Data
         public string MenuName { get; set; }
 
         //one-to-many relationship to MenuFoodItem
-        public MenuFoodItem? MenuFoodItem { get; set; }
+        public List<MenuFoodItem>? MenuFoodItems { get; set; }
         //one to many relationship to FoodBooking
-        public FoodBooking? FoodBooking { get; set; }
+        public List<FoodBooking>? FoodBookings { get; set; }
     }
 }
