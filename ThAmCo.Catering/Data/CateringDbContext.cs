@@ -21,17 +21,40 @@ namespace ThAmCo.Catering.Data
         }
 
 
+
         //specifies that SQlite will be used
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlite("Data Source =" + DbPath);
         }
+
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            //Defifning primary keys
             modelBuilder.Entity<FoodBooking>()
-                .HasKey(ts => new { ts.FoodBookingId, ts.MenuId });
+                .HasKey(fb => fb.FoodBookingId);
+
+            modelBuilder.Entity<Menu>()
+                .HasKey(m => m.MenuID);
+
+            modelBuilder.Entity<FoodItem>()
+                .HasKey(fi => fi.FoodItemId);
+
+            //defining composite key
+            modelBuilder.Entity<MenuFoodItem>()
+                .HasKey(mfi => new {mfi.MenuId, mfi.FoodItemID});
+
+            //Defining relationships
+            modelBuilder.Entity<>
+            
+
+
+
         }
     }
 }
