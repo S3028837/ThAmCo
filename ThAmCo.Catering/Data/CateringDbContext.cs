@@ -49,9 +49,25 @@ namespace ThAmCo.Catering.Data
             modelBuilder.Entity<MenuFoodItem>()
                 .HasKey(mfi => new {mfi.MenuId, mfi.FoodItemID});
 
-            //Defining relationships
-            modelBuilder.Entity<>
-            
+            //Defining relationships for compisite key
+            modelBuilder.Entity<Menu>()
+                .HasMany(mfi => mfi.MenuFoodItems)
+                .WithOne(m => m.Menu)
+                .HasForeignKey(m => m.MenuId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<FoodItem>()
+                .HasMany(mfi => mfi.MenuFoodItems)
+                .WithOne(fi => fi.FoodItem)
+                .OnDelete(DeleteBehavior.Restrict);
+            //OnDelete prevents entries within table from being deleted
+
+            //relationship between menu and foodBooking
+            modelBuilder.Entity<Menu>()
+                .HasMany(fb => fb.FoodBookings)
+                .WithOne(m => m.Menu)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
 
 
