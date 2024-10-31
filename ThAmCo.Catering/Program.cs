@@ -7,6 +7,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//register database context
+builder.Services.AddDbContext<ThAmCo.Catering.Data.CateringDbContext>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
