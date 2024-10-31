@@ -8,10 +8,11 @@ Continue and complete the developments of a web app that follows multiple requir
 
 I am currently working on the catering web service part of the project.  
 
-### Database Classes
+### Database
 
-Working on creating each class for the catering database(db).  
-Trying to define the many-to-one relationships has proven dificult between the classes.
-I have been making use of AI (Microsoft Copilot) and previous projects to try and understand the relationships.  
+**Challenges:**  
   
-I have also made use of Copilot to generate test data for the database.
+Relationships between databases  
+- Had trouble understanding the realtionships between the tables in the database.  
+I used Microsoft Copilot and looked at previous projects to help me understand it.  
+

@@ -94,6 +94,7 @@ namespace ThAmCo.Catering.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<float?>("UnitPrice")
+                        .IsRequired()
                         .HasColumnType("REAL");
 
                     b.HasKey("FoodItemId");
@@ -104,42 +105,50 @@ namespace ThAmCo.Catering.Data.Migrations
                         new
                         {
                             FoodItemId = 1,
-                            Description = "Pizza"
+                            Description = "Pizza",
+                            UnitPrice = 8.99f
                         },
                         new
                         {
                             FoodItemId = 2,
-                            Description = "Burger"
+                            Description = "Burger",
+                            UnitPrice = 5.49f
                         },
                         new
                         {
                             FoodItemId = 3,
-                            Description = "Pasta"
+                            Description = "Pasta",
+                            UnitPrice = 7.99f
                         },
                         new
                         {
                             FoodItemId = 4,
-                            Description = "Salad"
+                            Description = "Salad",
+                            UnitPrice = 4.99f
                         },
                         new
                         {
                             FoodItemId = 5,
-                            Description = "Sushi"
+                            Description = "Sushi",
+                            UnitPrice = 12.99f
                         },
                         new
                         {
                             FoodItemId = 6,
-                            Description = "Steak"
+                            Description = "Steak",
+                            UnitPrice = 15.99f
                         },
                         new
                         {
                             FoodItemId = 7,
-                            Description = "Tacos"
+                            Description = "Tacos",
+                            UnitPrice = 3.99f
                         },
                         new
                         {
                             FoodItemId = 8,
-                            Description = "Ice Cream"
+                            Description = "Ice Cream",
+                            UnitPrice = 2.99f
                         });
                 });
 
