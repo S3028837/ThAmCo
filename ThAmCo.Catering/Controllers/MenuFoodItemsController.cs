@@ -28,10 +28,11 @@ namespace ThAmCo.Catering.Controllers
         }
 
         // GET: api/MenuFoodItems/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<MenuFoodItem>> GetMenuFoodItem(int id)
+        [HttpGet("{MenuId}/{FoodItemId}")]
+        public async Task<ActionResult<MenuFoodItem>> GetMenuFoodItem(int MenuId, int FoodItemId)
         {
-            var menuFoodItem = await _context.MenuFoodItems.FindAsync(id);
+            var menuFoodItem = await _context.MenuFoodItems.FirstOrDefaultAsync
+                (m => m.MenuId == MenuId && m.FoodItemID == FoodItemId);
 
             if (menuFoodItem == null)
             {
