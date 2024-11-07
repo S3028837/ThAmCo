@@ -16,3 +16,10 @@ Relationships between databases
 - Had trouble understanding the realtionships between the tables in the database.  
 I used Microsoft Copilot and looked at previous projects to help me understand it.  
 
+### API  
+
+**Challenges**  
+  
+Understanding DTO  
+- Had trouble figuring out the code for the DTOs for each class.  
+Barry helped me understand it.

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ThAmCo.Catering.Data;
+using ThAmCo.Catering.Dto;
 
 namespace ThAmCo.Catering.Controllers
 {
@@ -22,9 +23,19 @@ namespace ThAmCo.Catering.Controllers
 
         // GET: api/FoodItems
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<FoodItem>>> GetFoodItems()
+        public async Task<ActionResult<IEnumerable<FoodItemDto>>> GetFoodItems()
         {
-            return await _context.FoodItems.ToListAsync();
+
+            //Turn foodItem into dto object
+            var foodItem =  await _context.FoodItems.ToListAsync();
+            var dto = foodItem.Select(x => new FoodItemDto
+            {
+                 FoodItemId = x.FoodItemId,
+                  Description = x.Description,
+                   UnitPrice =(float)x.UnitPrice
+            }).AsEnumerable();
+
+            return Ok(dto);
         }
 
         // GET: api/FoodItems/5
@@ -75,9 +86,17 @@ namespace ThAmCo.Catering.Controllers
         // POST: api/FoodItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<FoodItem>> PostFoodItem(FoodItem foodItem)
+        public async Task<ActionResult<FoodItem>> PostFoodItem(ThAmCo.Catering.Dto.FoodItemDto foodItem)
         {
-            _context.FoodItems.Add(foodItem);
+            // trun the DTo into a model object
+            ThAmCo.Catering.Data.FoodItem thisFoodItem = new FoodItem()
+            {
+                Description = foodItem.Description,
+                UnitPrice = foodItem.UnitPrice,
+                MenuFoodItems = null
+            };
+
+            _context.FoodItems.Add(thisFoodItem);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetFoodItem", new { id = foodItem.FoodItemId }, foodItem);
