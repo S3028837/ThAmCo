@@ -110,15 +110,32 @@ namespace ThAmCo.Catering.Controllers
         public async Task<ActionResult<MenuDetailsDto>> GetMenuItems(int id)
         {
             // Get the menu
-            var menu = await 
+            var menu = await _context.Menus.FindAsync(id);
+            if (menu != null)
+            {
+                return NotFound();
+            }
 
             // get the fooditems for that menu
+            var foodItems = await _context.FoodItems.ToListAsync();
 
             // Transform the FoodItem list into a FoodItemDto list
+            var foodItemsDto = foodItems.Select(fi => new FoodItemDto
+            {
+                FoodItemId = fi.FoodItemId,
+                Description = fi.Description,
+                UnitPrice = (float)fi.UnitPrice
+            }).AsEnumerable();
 
             //Created the DTO
+            var dto = new MenuDetailsDto
+            {
+                MenuId = menu.MenuID,
+                MenuName = menu.MenuName,
+                Items = (List<FoodItemDto>)foodItemsDto
+            });
 
-            return dto
+            return dto;
         }
     }
 }
