@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ThAmCo.Catering.Data;
+using ThAmCo.Catering.Dto;
 
 namespace ThAmCo.Catering.Controllers
 {
@@ -102,6 +103,22 @@ namespace ThAmCo.Catering.Controllers
         private bool MenuExists(int id)
         {
             return _context.Menus.Any(e => e.MenuID == id);
+        }
+
+        //GET: api/Menus/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<MenuDetailsDto>> GetMenuItems(int id)
+        {
+            // Get the menu
+            var menu = await 
+
+            // get the fooditems for that menu
+
+            // Transform the FoodItem list into a FoodItemDto list
+
+            //Created the DTO
+
+            return dto
         }
     }
 }
