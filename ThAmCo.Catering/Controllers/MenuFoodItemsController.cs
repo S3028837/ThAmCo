@@ -44,10 +44,10 @@ namespace ThAmCo.Catering.Controllers
 
         // PUT: api/MenuFoodItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutMenuFoodItem(int id, MenuFoodItem menuFoodItem)
+        [HttpPut("{MenuId}/{FoodItemId}")]
+        public async Task<IActionResult> PutMenuFoodItem(int MenuId, int FoodItemId, MenuFoodItem menuFoodItem)
         {
-            if (id != menuFoodItem.MenuId)
+            if (MenuId != menuFoodItem.MenuId || FoodItemId != menuFoodItem.FoodItemID)
             {
                 return BadRequest();
             }
@@ -60,7 +60,7 @@ namespace ThAmCo.Catering.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MenuFoodItemExists(id))
+                if (!MenuFoodItemExists(MenuId, FoodItemId))
                 {
                     return NotFound();
                 }
