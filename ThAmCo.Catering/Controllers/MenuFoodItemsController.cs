@@ -47,6 +47,7 @@ namespace ThAmCo.Catering.Controllers
         [HttpPut("{MenuId}/{FoodItemId}")]
         public async Task<IActionResult> PutMenuFoodItem(int MenuId, int FoodItemId, MenuFoodItem menuFoodItem)
         {
+            //checks if specified menufooditem exists
             if (MenuId != menuFoodItem.MenuId || FoodItemId != menuFoodItem.FoodItemID)
             {
                 return BadRequest();
@@ -58,8 +59,10 @@ namespace ThAmCo.Catering.Controllers
             {
                 await _context.SaveChangesAsync();
             }
+
             catch (DbUpdateConcurrencyException)
             {
+
                 if (!MenuFoodItemExists(MenuId, FoodItemId))
                 {
                     return NotFound();
@@ -71,6 +74,10 @@ namespace ThAmCo.Catering.Controllers
             }
 
             return NoContent();
+        }
+        private bool MenuFoodItemExists(int menuId, int foodItemId)
+        {
+            return _context.MenuFoodItems.Any(m => m.MenuId == menuId || m.FoodItemID == foodItemId);
         }
 
         // POST: api/MenuFoodItems
@@ -99,10 +106,10 @@ namespace ThAmCo.Catering.Controllers
         }
 
         // DELETE: api/MenuFoodItems/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMenuFoodItem(int id)
+        [HttpDelete("{MenuId}/{FoodItemId}")]
+        public async Task<IActionResult> DeleteMenuFoodItem(int MenuId, int FoodItemId)
         {
-            var menuFoodItem = await _context.MenuFoodItems.FindAsync(id);
+            var menuFoodItem = await _context.MenuFoodItems.FindAsync(MenuId, FoodItemId);
             if (menuFoodItem == null)
             {
                 return NotFound();
