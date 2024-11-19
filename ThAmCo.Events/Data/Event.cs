@@ -13,7 +13,7 @@ namespace ThAmCo.Events.Data
         [MaxLength(100)]
         public string? EventName { get; set; }
         public string? EventType { get; set; }
-        public DateOnly? EventDate {  get; set; }
+        public DateTime? EventDate {  get; set; }
 
         //event relationships
         public List<Staffing>? Staffings { get; set; }
