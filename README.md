@@ -6,8 +6,6 @@ Continue and complete the developments of a web app that follows multiple requir
 
 ## ThAmCo.Catering
 
-I am currently working on the catering web service part of the project.  
-
 ### Database
 
 **Challenges:**  
@@ -27,3 +25,9 @@ Decided to pause progress on DTO for now as I dont think it is the most importan
   
 - Had trouble using DTOs to list the FoodItems of a specified Menu.  
 Barry and another student (Ben Shafto) helped me undersrand the direction to go in.  
+  
+## ThAmCo.Events  
+  
+### Database  
+  
+Working on creating the classes and database for the Events part of the project  
