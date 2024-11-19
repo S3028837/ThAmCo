@@ -2,7 +2,7 @@
 {
     public class Staffing
     {
-        public int staffId { get; set; }
-        public int eventId { get; set; }
+        public int StaffId { get; set; }
+        public int EventId { get; set; }
     }
 }

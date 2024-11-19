@@ -5,11 +5,14 @@ namespace ThAmCo.Events.Data
 {
     public class Event
     {
+        //variables for event class
         [Required]
-        public int eventId {  get; set; }
+        public int EventId {  get; set; }
+        public string? ReservationReference { get; set; }
+        public int? FoodBookingId { get; set; }
         [MaxLength(100)]
-        public string eventName { get; set; }
-        public string eventType { get; set; }
-        public DateOnly? eventDate {  get; set; }
+        public string EventName { get; set; }
+        public string EventType { get; set; }
+        public DateOnly? EventDate {  get; set; }
     }
 }

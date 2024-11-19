@@ -5,10 +5,10 @@ namespace ThAmCo.Events.Data
     public class Staff
     {
         [Required]
-        public int staffId { get; set; }
-        public string staffName { get; set; }
+        public int StaffId { get; set; }
+        public string StaffName { get; set; }
         [EmailAddress]
-        public string staffEmail { get; set; }
-        public bool firstAidTrained { get; set; }
+        public string StaffEmail { get; set; }
+        public bool FirstAidTrained { get; set; }
     }
 }
