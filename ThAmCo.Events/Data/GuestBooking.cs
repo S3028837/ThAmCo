@@ -10,5 +10,9 @@ namespace ThAmCo.Events.Data
         public int GuestId { get; set; }
         public int EventId {  get; set; }
         public bool Attendance {  get; set; }
+
+        //GuestBooking relationships
+        public Event? Event { get; set; }
+        public Guest? Guest { get; set; }
     }
 }
