@@ -37,12 +37,12 @@ namespace ThAmCo.Events.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            //Staffing composite key
             modelBuilder.Entity<Event>()
                 .HasKey(e=>e.EventId);
 
             modelBuilder.Entity<Staff>()
                 .HasKey(s=>s.StaffId);
-
 
             modelBuilder.Entity<Staffing>()
                 .HasKey(st => new { st.StaffId, st.EventId });
@@ -57,7 +57,7 @@ namespace ThAmCo.Events.Data
                 .WithOne(s => s.Staff)
                 .HasForeignKey(s=>s.StaffId);
 
-
+            //Guest booking relationships
             modelBuilder.Entity<Event>()
                 .HasMany(gb => gb.GuestBookings)
                 .WithOne(e => e.Event);
