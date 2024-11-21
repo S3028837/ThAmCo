@@ -78,13 +78,13 @@ namespace ThAmCo.Events.Data.Migrations
                         column: x => x.EventId,
                         principalTable: "Events",
                         principalColumn: "EventId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_GuestBookings_Guests_GuestId",
                         column: x => x.GuestId,
                         principalTable: "Guests",
                         principalColumn: "GuestId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -102,13 +102,13 @@ namespace ThAmCo.Events.Data.Migrations
                         column: x => x.EventId,
                         principalTable: "Events",
                         principalColumn: "EventId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Staffings_Staffs_StaffId",
                         column: x => x.StaffId,
                         principalTable: "Staffs",
                         principalColumn: "StaffId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -173,8 +173,7 @@ namespace ThAmCo.Events.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_GuestBookings_EventId",
                 table: "GuestBookings",
-                column: "EventId",
-                unique: true);
+                column: "EventId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_GuestBookings_GuestId",

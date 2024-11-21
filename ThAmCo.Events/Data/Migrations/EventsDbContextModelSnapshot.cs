@@ -158,8 +158,7 @@ namespace ThAmCo.Events.Data.Migrations
 
                     b.HasKey("GuestBookingId");
 
-                    b.HasIndex("EventId")
-                        .IsUnique();
+                    b.HasIndex("EventId");
 
                     b.HasIndex("GuestId");
 
@@ -305,15 +304,15 @@ namespace ThAmCo.Events.Data.Migrations
             modelBuilder.Entity("ThAmCo.Events.Data.GuestBooking", b =>
                 {
                     b.HasOne("ThAmCo.Events.Data.Event", "Event")
-                        .WithOne("GuestBooking")
-                        .HasForeignKey("ThAmCo.Events.Data.GuestBooking", "EventId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .WithMany("GuestBookings")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ThAmCo.Events.Data.Guest", "Guest")
                         .WithMany("GuestBookings")
                         .HasForeignKey("GuestId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Event");
@@ -326,13 +325,13 @@ namespace ThAmCo.Events.Data.Migrations
                     b.HasOne("ThAmCo.Events.Data.Event", "Event")
                         .WithMany("Staffings")
                         .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ThAmCo.Events.Data.Staff", "Staff")
                         .WithMany("Staffings")
                         .HasForeignKey("StaffId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Event");
@@ -342,7 +341,7 @@ namespace ThAmCo.Events.Data.Migrations
 
             modelBuilder.Entity("ThAmCo.Events.Data.Event", b =>
                 {
-                    b.Navigation("GuestBooking");
+                    b.Navigation("GuestBookings");
 
                     b.Navigation("Staffings");
                 });

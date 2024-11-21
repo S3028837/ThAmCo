@@ -48,26 +48,24 @@ namespace ThAmCo.Events.Data
                 .HasKey(st => new { st.StaffId, st.EventId });
 
             modelBuilder.Entity<Event>()
-                .HasMany(st =>st.Staffings)
-                .WithOne(e=>e.Event)
-                .HasForeignKey(e=>e.EventId)
-                .OnDelete(DeleteBehavior.Restrict);
-
+                .HasMany(st => st.Staffings)
+                .WithOne(e => e.Event)
+                .HasForeignKey(e => e.EventId);
+                
             modelBuilder.Entity<Staff>()
                 .HasMany(st => st.Staffings)
                 .WithOne(s => s.Staff)
-                .HasForeignKey(s=>s.StaffId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(s=>s.StaffId);
+
 
             modelBuilder.Entity<Event>()
-                .HasOne(gb => gb.GuestBooking)
-                .WithOne(e => e.Event)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasMany(gb => gb.GuestBookings)
+                .WithOne(e => e.Event);
 
             modelBuilder.Entity<Guest>()
                 .HasMany(gb => gb.GuestBookings)
-                .WithOne(g => g.Guest)
-                .OnDelete(DeleteBehavior.Restrict);
+                .WithOne(g => g.Guest);
+                
 
 
 

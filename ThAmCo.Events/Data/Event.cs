@@ -17,6 +17,6 @@ namespace ThAmCo.Events.Data
 
         //event relationships
         public List<Staffing>? Staffings { get; set; }
-        public GuestBooking? GuestBooking { get; set; }
+        public List<GuestBooking>? GuestBookings { get; set; }
     }
 }
