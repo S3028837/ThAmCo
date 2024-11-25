@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ThAmCo.Events.Data;
 
-namespace ThAmCo.Events.Pages.EventList
+namespace ThAmCo.Events.Pages.GuestList
 {
     public class DeleteModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace ThAmCo.Events.Pages.EventList
         }
 
         [BindProperty]
-        public Event Event { get; set; } = default!;
+        public Guest Guest { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,15 +28,15 @@ namespace ThAmCo.Events.Pages.EventList
                 return NotFound();
             }
 
-            var event = await _context.Events.FirstOrDefaultAsync(m => m.EventId == id);
+            var guest = await _context.Guests.FirstOrDefaultAsync(m => m.GuestId == id);
 
-            if (event == null)
+            if (guest == null)
             {
                 return NotFound();
             }
             else
             {
-                Event = event;
+                Guest = guest;
             }
             return Page();
         }
@@ -48,11 +48,11 @@ namespace ThAmCo.Events.Pages.EventList
                 return NotFound();
             }
 
-            var event = await _context.Events.FindAsync(id);
-            if (event != null)
+            var guest = await _context.Guests.FindAsync(id);
+            if (guest != null)
             {
-                Event = event;
-                _context.Events.Remove(Event);
+                Guest = guest;
+                _context.Guests.Remove(Guest);
                 await _context.SaveChangesAsync();
             }
 

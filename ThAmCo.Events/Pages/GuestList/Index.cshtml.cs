@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ThAmCo.Events.Data;
 
-namespace ThAmCo.Events.Pages.EventList
+namespace ThAmCo.Events.Pages.GuestList
 {
     public class IndexModel : PageModel
     {
@@ -18,11 +18,11 @@ namespace ThAmCo.Events.Pages.EventList
             _context = context;
         }
 
-        public IList<Event> Event { get;set; } = default!;
+        public IList<Guest> Guest { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Event = await _context.Events.ToListAsync();
+            Guest = await _context.Guests.ToListAsync();
         }
     }
 }

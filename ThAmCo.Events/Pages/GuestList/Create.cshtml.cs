@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ThAmCo.Events.Data;
 
-namespace ThAmCo.Events.Pages.EventList
+namespace ThAmCo.Events.Pages.GuestList
 {
     public class CreateModel : PageModel
     {
@@ -24,7 +24,7 @@ namespace ThAmCo.Events.Pages.EventList
         }
 
         [BindProperty]
-        public Event Event { get; set; } = default!;
+        public Guest Guest { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -34,7 +34,7 @@ namespace ThAmCo.Events.Pages.EventList
                 return Page();
             }
 
-            _context.Events.Add(Event);
+            _context.Guests.Add(Guest);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
