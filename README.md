@@ -31,3 +31,9 @@ Barry and another student (Ben Shafto) helped me undersrand the direction to go 
 ### Database  
   
 Working on creating the classes and database for the Events part of the project  
+  
+### Razor Pages  
+  
+Having trouble scaffolding the razor page to list Event Details.  
+The Issue was naming. event is an already defined type so couldn't be a variable  
+  
