@@ -11,9 +11,9 @@ namespace ThAmCo.Events.Data
         public string? ReservationReference { get; set; }
         public int? FoodBookingId { get; set; }
         [MaxLength(100)]
-        public string? EventName { get; set; }
-        public string? EventType { get; set; }
-        public DateTime? EventDate {  get; set; }
+        public string EventName { get; set; }
+        public string EventType { get; set; }
+        public DateTime EventDate {  get; set; }
 
         //event relationships
         public List<Staffing>? Staffings { get; set; }
