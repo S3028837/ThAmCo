@@ -1,0 +1,63 @@
+﻿@page
+@model ThAmCo.Events.Pages.EventList.GuestsModel
+
+@{
+    ViewData["Title"] = "Guests";
+}
+
+<h1>@Model.GuestBooking.FirstOrDefault()?.Event.EventName</h1>
+
+<p>
+    Total Guests: @Model.GuestBooking.Count
+</p>
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.GuestBooking[0].Attendance)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GuestBooking[0].Event)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GuestBooking[0].Guest)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Guest[0].GuestEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Guest[0].GuestPhone)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.GuestBooking) {
+            <tr>
+                <td>
+                    @Html.EditorFor(modelItem => item.Attendance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event.EventName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest.GuestName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest.GuestEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest.GuestPhone)
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
