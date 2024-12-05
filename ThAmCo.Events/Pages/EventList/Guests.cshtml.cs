@@ -21,8 +21,11 @@ namespace ThAmCo.Events.Pages.EventList
 
         public IList<Guest> Guest { get; set; } = default!;
 
-        //Lists guests for a specified Event
+        [BindProperty]
+        public List<GuestBookingVM> Bookings { get; set; } = new List<GuestBookingVM>();
 
+        
+        //Lists guests for a specified Event
         public IList<GuestBooking> GuestBooking { get;set; } = default!;
 
         public async Task OnGetAsync(int? id)
@@ -37,21 +40,52 @@ namespace ThAmCo.Events.Pages.EventList
                 .Include(g => g.Event);
 
             GuestBooking = await bookingContext.ToListAsync();
+
+            Bookings = GuestBooking.Select(g => new GuestBookingVM
+            {
+                 Attendance = g.Attendance,
+                  EventId = g.EventId,
+                   EventName = g.Event.EventName,
+                    GuestEmail = g.Guest.GuestEmail,
+                    GuestPhone = g.Guest.GuestPhone,
+                     GuestId = g.GuestId,
+                       GuestName = g.Guest.GuestName,
+            }).ToList();
         }
 
 
+
         //method to register attendance
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            // Save the updated guest bookings to the database or other storage
+            _context.Attach(GuestBooking).State = EntityState.Modified;
+
+            //try
+            //{
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    if (!GuestBookingExists(GuestBooking.GuestBookingId))
+            //    {
+            //        return NotFound();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
 
             return RedirectToPage("/Eventlist/Index");
         }
-    
+        private bool GuestBookingExists(int id)
+        {
+            return _context.GuestBookings.Any(e => e.GuestBookingId == id);
+        }
     }
 }
