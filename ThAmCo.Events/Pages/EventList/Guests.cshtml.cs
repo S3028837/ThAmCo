@@ -22,8 +22,8 @@ namespace ThAmCo.Events.Pages.EventList
         public IList<Guest> Guest { get; set; } = default!;
 
         //Lists guests for a specified Event
-
-        public IList<GuestBooking> GuestBooking { get;set; } = default!;
+        //GET Guest
+        public IList<GuestBooking> GuestBooking { get; set; } = default!;
 
         public async Task OnGetAsync(int? id)
         {
@@ -38,20 +38,5 @@ namespace ThAmCo.Events.Pages.EventList
 
             GuestBooking = await bookingContext.ToListAsync();
         }
-
-
-        //method to register attendance
-        public IActionResult OnPost()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            // Save the updated guest bookings to the database or other storage
-
-            return RedirectToPage("/Eventlist/Index");
-        }
-    
     }
 }
