@@ -12,53 +12,44 @@
 </p>
 
 <form method="post">
-    
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Bookings[0].Attendance)
+                    @Html.DisplayNameFor(model => model.GuestBooking[0].Attendance)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Bookings[0].EventName)
+                    @Html.DisplayNameFor(model => model.GuestBooking[0].Event)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Bookings[0].GuestName)
+                    @Html.DisplayNameFor(model => model.GuestBooking[0].Guest)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Bookings[0].GuestEmail)
+                    @Html.DisplayNameFor(model => model.Guest[0].GuestEmail)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Bookings[0].GuestPhone)
+                    @Html.DisplayNameFor(model => model.Guest[0].GuestPhone)
                 </th>
-                <th></th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
-    @foreach (var item in Model.Bookings) {
+    @foreach (var item in Model.GuestBooking) {
             <tr>
                 <td>
-                    @Html.CheckBoxFor(modelItem => item.Attendance)
+                    @Html.EditorFor(modelItem => item.Attendance)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EventName)
+                    @Html.DisplayFor(modelItem => item.Event.EventName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.GuestName)
+                    @Html.DisplayFor(modelItem => item.Guest.GuestName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.GuestEmail)
+                    @Html.DisplayFor(modelItem => item.Guest.GuestEmail)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.GuestPhone)
+                    @Html.DisplayFor(modelItem => item.Guest.GuestPhone)
                 </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EventId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.GuestId)
-                    </td>
             </tr>
     }
         </tbody>
