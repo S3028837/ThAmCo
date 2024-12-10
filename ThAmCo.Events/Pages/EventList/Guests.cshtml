@@ -51,7 +51,8 @@
                 @Html.DisplayFor(modelItem => item.Guest.GuestPhone)
             </td>
             <td>
-                    <a asp-page="./Register" asp-route-id="@item.GuestBookingId">Attended</a>
+                    <a asp-page="./Register" asp-route-id="@item.GuestBookingId">Attended</a> |
+                    <a asp-page="/GuestBookingList/Delete" asp-route-id="@item.GuestBookingId">Cancel</a>
             </td>
         </tr>
 }

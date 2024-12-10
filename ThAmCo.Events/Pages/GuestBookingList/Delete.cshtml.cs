@@ -18,6 +18,9 @@ namespace ThAmCo.Events.Pages.GuestBookingList
             _context = context;
         }
 
+        public Event Event { get; set; } = default!;
+        public Guest Guest { get; set; } = default!;
+
         [BindProperty]
         public GuestBooking GuestBooking { get; set; } = default!;
 
@@ -38,8 +41,32 @@ namespace ThAmCo.Events.Pages.GuestBookingList
             {
                 GuestBooking = guestbooking;
             }
+
+
+            var guest = await _context.Guests.FirstOrDefaultAsync(m => m.GuestId == id);
+            if (guest == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                Guest = guest;
+            }
+
+
+            var events = await _context.Events.FirstOrDefaultAsync(e => e.EventId == id);
+            if (events == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                Event = events;
+            }
             return Page();
         }
+
+
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
