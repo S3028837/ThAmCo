@@ -30,8 +30,55 @@
             @Html.DisplayFor(model => model.Guest.GuestEmail)
         </dd>
     </dl>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GuestBooking[0].Event.EventName)
+            </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GuestBooking[0].Event.EventType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GuestBooking[0].Event.EventDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GuestBooking[0].Event.ReservationReference)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GuestBooking[0].Event.FoodBookingId)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GuestBooking[0].Attendance)
+            </th>
+        </tr>
+</thead>
+    <tbody>
+@foreach (var item in Model.GuestBooking) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.EventName)
+            </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Event.EventType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Event.EventDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Event.ReservationReference)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Event.FoodBookingId)
+                    </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attendance)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Guest.GuestId">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>
