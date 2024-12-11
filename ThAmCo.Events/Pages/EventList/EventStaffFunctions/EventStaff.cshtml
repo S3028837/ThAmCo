@@ -1,0 +1,48 @@
+﻿@page
+@model EventStaffModel
+
+@{
+    ViewData["Title"] = "EventStaff";
+}
+
+<h1>Staff for @Model.Staffing.FirstOrDefault()?.Event.EventName Event </h1>
+
+<p>
+    Total Staff: @Model.Staffing.Count
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Staffing[0].Staff.StaffName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Staffing[0].Staff.StaffEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Staffing[0].Staff.FirstAidTrained)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Staffing) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Staff.StaffName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Staff.StaffEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Staff.FirstAidTrained)
+            </td>
+            <td>
+                    <a asp-page="Remove" asp-route-eventId="@item.EventId" asp-route-staffId="@item.StaffId">Remove</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a asp-page="/EventList/Index">Back to List</a> | <a asp-page="Add">Add Staff to Event</a>
