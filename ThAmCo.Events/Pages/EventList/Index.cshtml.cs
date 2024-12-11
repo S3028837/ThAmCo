@@ -22,7 +22,9 @@ namespace ThAmCo.Events.Pages.EventList
 
         public async Task OnGetAsync()
         {
-            Event = await _context.Events.ToListAsync();
+            Event = await _context.Events
+                .Include(e => e.GuestBookings)
+                .ToListAsync();
         }
     }
 }

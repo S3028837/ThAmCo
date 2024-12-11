@@ -28,6 +28,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Event[0].EventDate)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Event[0].GuestBookings)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -49,6 +52,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EventDate)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GuestBookings.Count)
+                </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.EventId">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.EventId">Details</a> |
