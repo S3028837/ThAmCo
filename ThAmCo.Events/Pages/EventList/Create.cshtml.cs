@@ -6,20 +6,32 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ThAmCo.Events.Data;
+using ThAmCo.Events.Services;
 
 namespace ThAmCo.Events.Pages.EventList
 {
     public class CreateModel : PageModel
     {
-        private readonly ThAmCo.Events.Data.EventsDbContext _context;
 
-        public CreateModel(ThAmCo.Events.Data.EventsDbContext context)
+        //Registered data and services
+        private readonly ThAmCo.Events.Data.EventsDbContext _context;
+        private readonly EventTypeService _EventTypeService;
+
+        public CreateModel(ThAmCo.Events.Data.EventsDbContext context, EventTypeService EventTypeService)
         {
             _context = context;
+            _EventTypeService = EventTypeService;
         }
 
-        public IActionResult OnGet()
+        //method to get event types
+        public async Task<IActionResult> OnGetAsync()
         {
+            var et = await _EventTypeService.GetEventTypesAsync();
+
+            var items = et.ToList();
+
+            ViewData["EventType"] = new SelectList(items, "id", "title");
+
             return Page();
         }
 
