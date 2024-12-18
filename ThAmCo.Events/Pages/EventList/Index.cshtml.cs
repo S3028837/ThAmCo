@@ -18,7 +18,7 @@ namespace ThAmCo.Events.Pages.EventList
             _context = context;
         }
 
-        public IList<Event> Event { get;set; } = default!;
+        public IList<Event> Event { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
@@ -38,6 +38,20 @@ namespace ThAmCo.Events.Pages.EventList
                 return ("");
             }
             return ("Warning! No First Aid trained staff assigned");
+        }
+
+
+
+        public string StaffCheck(Event ev)
+        {
+            double guestCount = ev.GuestBookings.Count();
+            double modifiedGuestCount = guestCount / 10;
+
+            if (ev.Staffings.Count >= modifiedGuestCount)
+            {
+                return ("");
+            }
+            return ("Warning! Not Enough Staff");
         }
     }
 }
