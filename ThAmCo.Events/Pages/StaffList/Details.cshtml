@@ -30,6 +30,50 @@
             @Html.DisplayFor(model => model.Staff.FirstAidTrained)
         </dd>
     </dl>
+    <h3>Upcoming Events</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Staffing[0].Event.EventName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Staffing[0].Event.EventType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Staffing[0].Event.EventDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Staffing[0].Event.ReservationReference)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Staffing[0].Event.FoodBookingId)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Staffing)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Event.EventName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Event.EventType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Event.EventDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Event.ReservationReference)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Event.FoodBookingId)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Staff.StaffId">Edit</a> |
