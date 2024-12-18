@@ -59,6 +59,7 @@
                @*  debugged with copilot, formats warning message relavanrly *@
                 <td>
                     <span class="text-danger">@Model.GetTrainedStaffStatus(item)</span>
+                    <span class="text-danger">@Model.StaffCheck(item)</span>
                 </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.EventId">Edit</a> |

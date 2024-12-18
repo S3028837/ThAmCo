@@ -11,6 +11,7 @@
     Total Staff: @Model.Staffing.Count
 </p>
     <span class="text-danger">@Model.GetTrainedStaffStatus(@Model.Staffing.FirstOrDefault() ?.Staff)</span>
+<span class="text-danger">@Model.StaffCheck(@Model.Staffing.FirstOrDefault()?.Event)</span>
 
 <table class="table">
     <thead>

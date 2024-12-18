@@ -85,7 +85,17 @@ namespace ThAmCo.Events.Data
                 new Guest { GuestId = 2, GuestName = "Jane Smith", GuestPhone = "098-765-4321", GuestEmail = "jane.smith@example.com" },
                 new Guest { GuestId = 3, GuestName = "Emily Davis", GuestPhone = "555-123-4567", GuestEmail = "emily.davis@example.com" },
                 new Guest { GuestId = 4, GuestName = "Michael Brown", GuestPhone = "555-987-6543", GuestEmail = "michael.brown@example.com" },
-                new Guest { GuestId = 5, GuestName = "Sarah Wilson", GuestPhone = "555-555-5555", GuestEmail = "sarah.wilson@example.com" }
+                new Guest { GuestId = 5, GuestName = "Sarah Wilson", GuestPhone = "555-555-5555", GuestEmail = "sarah.wilson@example.com" },
+                new Guest { GuestId = 6, GuestName = "David Johnson", GuestPhone = "555-111-2222", GuestEmail = "david.johnson@example.com" },
+                new Guest { GuestId = 7, GuestName = "Laura Martinez", GuestPhone = "555-333-4444", GuestEmail = "laura.martinez@example.com" },
+                new Guest { GuestId = 8, GuestName = "James Anderson", GuestPhone = "555-666-7777", GuestEmail = "james.anderson@example.com" },
+                new Guest { GuestId = 9, GuestName = "Patricia Taylor", GuestPhone = "555-888-9999", GuestEmail = "patricia.taylor@example.com" },
+                new Guest { GuestId = 10, GuestName = "Robert Lee", GuestPhone = "555-000-1111", GuestEmail = "robert.lee@example.com" },
+                new Guest { GuestId = 11, GuestName = "Linda Harris", GuestPhone = "555-222-3333", GuestEmail = "linda.harris@example.com" },
+                new Guest { GuestId = 12, GuestName = "Charles Clark", GuestPhone = "555-444-5555", GuestEmail = "charles.clark@example.com" },
+                new Guest { GuestId = 13, GuestName = "Barbara Lewis", GuestPhone = "555-666-7777", GuestEmail = "barbara.lewis@example.com" },
+                new Guest { GuestId = 14, GuestName = "Thomas Walker", GuestPhone = "555-888-9999", GuestEmail = "thomas.walker@example.com" },
+                new Guest { GuestId = 15, GuestName = "Nancy Hall", GuestPhone = "555-000-1111", GuestEmail = "nancy.hall@example.com" }
             );
 
             // Seed GuestBookings
@@ -94,7 +104,17 @@ namespace ThAmCo.Events.Data
                 new GuestBooking { GuestBookingId = 2, GuestId = 2, EventId = 1, Attendance = true },
                 new GuestBooking { GuestBookingId = 3, GuestId = 3, EventId = 2, Attendance = true },
                 new GuestBooking { GuestBookingId = 4, GuestId = 4, EventId = 3, Attendance = false },
-                new GuestBooking { GuestBookingId = 5, GuestId = 5, EventId = 4, Attendance = true }
+                new GuestBooking { GuestBookingId = 5, GuestId = 5, EventId = 4, Attendance = true },
+                new GuestBooking { GuestBookingId = 6, GuestId = 6, EventId = 2, Attendance = false },
+                new GuestBooking { GuestBookingId = 7, GuestId = 7, EventId = 2, Attendance = true },
+                new GuestBooking { GuestBookingId = 8, GuestId = 8, EventId = 2, Attendance = false },
+                new GuestBooking { GuestBookingId = 9, GuestId = 9, EventId = 2, Attendance = true },
+                new GuestBooking { GuestBookingId = 10, GuestId = 10, EventId = 2, Attendance = false },
+                new GuestBooking { GuestBookingId = 11, GuestId = 11, EventId = 2, Attendance = true },
+                new GuestBooking { GuestBookingId = 12, GuestId = 12, EventId = 2, Attendance = false },
+                new GuestBooking { GuestBookingId = 13, GuestId = 13, EventId = 2, Attendance = true },
+                new GuestBooking { GuestBookingId = 14, GuestId = 14, EventId = 2, Attendance = false },
+                new GuestBooking { GuestBookingId = 15, GuestId = 15, EventId = 2, Attendance = true }
             );
 
             // Seed Staff

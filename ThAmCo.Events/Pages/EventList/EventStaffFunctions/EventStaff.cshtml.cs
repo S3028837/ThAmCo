@@ -34,6 +34,7 @@ namespace ThAmCo.Events.Pages.EventList.EventStaffFunctions
 
             staffingContext = staffingContext
                 .Include(s => s.Event)
+                .ThenInclude(e => e.GuestBookings)
                 .Include(s => s.Staff);
 
             Staffing = await staffingContext.ToListAsync();
@@ -46,6 +47,18 @@ namespace ThAmCo.Events.Pages.EventList.EventStaffFunctions
                 return ("");
             }
             return ("Warning! No First Aid trained staff assigned");
+        }
+
+        public string StaffCheck(Event ev)
+        {
+            double guestCount = ev.GuestBookings.Count();
+            double modifiedGuestCount = guestCount / 10;
+
+            if (ev.Staffings.Count >= modifiedGuestCount)
+            {
+                return ("");
+            }
+            return ("Warning! Not Enough Staff");
         }
     }
 }
