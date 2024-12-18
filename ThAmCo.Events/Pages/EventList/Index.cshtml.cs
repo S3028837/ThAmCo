@@ -24,7 +24,20 @@ namespace ThAmCo.Events.Pages.EventList
         {
             Event = await _context.Events
                 .Include(e => e.GuestBookings)
+                .Include(e => e.Staffings)
+                    .ThenInclude(s => s.Staff)
                 .ToListAsync();
+        }
+
+        //debuged with copilot
+        //checks if an event has FirstAidTrained staff assigned to it and displays the appropriate warning
+        public string GetTrainedStaffStatus(Event ev)
+        {
+            if (ev.Staffings != null && ev.Staffings.Any(s => s.Staff != null && s.Staff.FirstAidTrained))
+            {
+                return ("");
+            }
+            return ("Warning! No First Aid trained staff assigned");
         }
     }
 }

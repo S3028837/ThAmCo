@@ -32,6 +32,7 @@
                 @Html.DisplayNameFor(model => model.Event[0].GuestBookings)
             </th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -54,6 +55,10 @@
             </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.GuestBookings.Count)
+                </td>
+               @*  debugged with copilot, formats warning message relavanrly *@
+                <td>
+                    <span class="text-danger">@Model.GetTrainedStaffStatus(item)</span>
                 </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.EventId">Edit</a> |

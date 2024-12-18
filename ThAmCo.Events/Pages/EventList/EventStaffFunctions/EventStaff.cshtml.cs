@@ -38,5 +38,14 @@ namespace ThAmCo.Events.Pages.EventList.EventStaffFunctions
 
             Staffing = await staffingContext.ToListAsync();
         }
+
+        public string GetTrainedStaffStatus(Staff staff)
+        {
+            if (staff != null && staff.FirstAidTrained)
+            {
+                return ("");
+            }
+            return ("Warning! No First Aid trained staff assigned");
+        }
     }
 }

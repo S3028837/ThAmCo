@@ -10,6 +10,7 @@
 <p>
     Total Staff: @Model.Staffing.Count
 </p>
+    <span class="text-danger">@Model.GetTrainedStaffStatus(@Model.Staffing.FirstOrDefault() ?.Staff)</span>
 
 <table class="table">
     <thead>
