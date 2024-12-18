@@ -8,7 +8,10 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<EventsDbContext>();
 
+//registering services
 builder.Services.AddScoped<EventTypeService>();
+
+builder.Services.AddScoped<VenueAvailabilityService>();
 
 var app = builder.Build();
 

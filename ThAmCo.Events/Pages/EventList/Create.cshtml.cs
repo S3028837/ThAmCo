@@ -23,14 +23,13 @@ namespace ThAmCo.Events.Pages.EventList
             _EventTypeService = EventTypeService;
         }
 
-        //method to get event types
+        //GET methods
         public async Task<IActionResult> OnGetAsync()
         {
+            //GETs event types from service
             var et = await _EventTypeService.GetEventTypesAsync();
-
-            var items = et.ToList();
-
-            ViewData["EventType"] = new SelectList(items, "id", "title");
+            var eventTypes = et.ToList();
+            ViewData["EventType"] = new SelectList(eventTypes, "id", "title");
 
             return Page();
         }
