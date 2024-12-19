@@ -18,6 +18,9 @@ namespace ThAmCo.Events.Pages.EventList.EventStaffFunctions
             _context = context;
         }
 
+        public Event Event { get; set; } = default!;
+        public Staff Staff { get; set; } = default!;
+
         [BindProperty]
         public Staffing Staffing { get; set; } = default!;
 
@@ -25,6 +28,8 @@ namespace ThAmCo.Events.Pages.EventList.EventStaffFunctions
         public async Task<IActionResult> OnGetAsync(int eventId, int staffId)
         {
             var staffing = await _context.Staffings
+                .Include(s => s.Staff)
+                .Include(s=>s.Event)
                 .FirstOrDefaultAsync(s => s.EventId == eventId && s.StaffId == staffId);
 
             if (staffing == null)
@@ -35,6 +40,10 @@ namespace ThAmCo.Events.Pages.EventList.EventStaffFunctions
             {
                 Staffing = staffing;
             }
+
+            Staff = staffing.Staff;
+            Event = staffing.Event;
+
             return Page();
         }
 
@@ -54,7 +63,7 @@ namespace ThAmCo.Events.Pages.EventList.EventStaffFunctions
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("/EventList");
+            return RedirectToPage("/EventList/EventStaffFunctions/EventStaff", new { id = Staffing.EventId });
         }
     }
 }

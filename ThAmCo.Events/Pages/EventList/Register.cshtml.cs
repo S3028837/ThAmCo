@@ -35,7 +35,7 @@ namespace ThAmCo.Events.Pages.EventList
                 return NotFound();
             }
             GuestBooking = guestbooking;
-           ViewData["EventId"] = new SelectList(_context.Events, "EventId", "EventId");
+           ViewData["EventId"] = new SelectList(_context.Events, "EventId", "EventName");
            ViewData["GuestId"] = new SelectList(_context.Guests, "GuestId", "GuestName");
             return Page();
         }
@@ -67,7 +67,7 @@ namespace ThAmCo.Events.Pages.EventList
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/EventList/Guests",new { id = GuestBooking.EventId });
         }
 
         private bool GuestBookingExists(int id)

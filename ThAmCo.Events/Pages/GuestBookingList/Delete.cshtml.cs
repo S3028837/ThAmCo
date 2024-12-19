@@ -68,7 +68,7 @@ namespace ThAmCo.Events.Pages.GuestBookingList
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/EventList/Guests", new { id = GuestBooking.EventId });
         }
     }
 }

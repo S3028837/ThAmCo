@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using ThAmCo.Events.Data;
 
 namespace ThAmCo.Events.Pages.EventList.EventStaffFunctions
@@ -18,10 +19,16 @@ namespace ThAmCo.Events.Pages.EventList.EventStaffFunctions
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int id)
         {
-        ViewData["EventId"] = new SelectList(_context.Events, "EventId", "EventId");
-        ViewData["StaffId"] = new SelectList(_context.Staffs, "StaffId", "StaffId");
+            var selectedEvent = _context.Events.FirstOrDefault(e => e.EventId == id);
+
+            Staffing = new Staffing
+            {
+                EventId = selectedEvent.EventId
+            };
+            ViewData["EventName"] = selectedEvent.EventName;
+            ViewData["StaffId"] = new SelectList(_context.Staffs, "StaffId", "StaffName");
             return Page();
         }
 
@@ -39,7 +46,7 @@ namespace ThAmCo.Events.Pages.EventList.EventStaffFunctions
             _context.Staffings.Add(Staffing);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./EventStaff");
+            return RedirectToPage("/EventList/EventStaffFunctions/EventStaff", new {id = Staffing.EventId});
         }
     }
 }

@@ -18,8 +18,11 @@
                 <select asp-for="Staffing.StaffId" class ="form-control" asp-items="ViewBag.StaffId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Staffing.EventId" class="control-label"></label>
-                <select asp-for="Staffing.EventId" class ="form-control" asp-items="ViewBag.EventId"></select>
+                <label class="control-label">Event Name</label>
+                <input class="form-control" value="@ViewData["EventName"]" readonly />
+            </div>
+            <div>
+                <input type="hidden" asp-for="Staffing.EventId" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -29,7 +32,7 @@
 </div>
 
 <div>
-    <a asp-page="EventStaff">Back to List</a>
+    <a asp-page="/EventList/EventStaffFunctions/EventStaff" asp-route-id="@Model.Staffing.EventId">Back to List</a>
 </div>
 
 @section Scripts {

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using ThAmCo.Events.Data;
 
 namespace ThAmCo.Events.Pages.GuestBookingList
@@ -18,10 +19,16 @@ namespace ThAmCo.Events.Pages.GuestBookingList
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int id)
         {
-        ViewData["EventId"] = new SelectList(_context.Events, "EventId", "EventId");
-        ViewData["GuestId"] = new SelectList(_context.Guests, "GuestId", "GuestName");
+            //Debugged with help from Microsoft Copilot
+            //Gets Event Details
+            GuestBooking = _context.GuestBookings
+                .Include(gb => gb.Event)
+                .FirstOrDefault(gb => gb.EventId == id);
+
+            ViewData["EventName"] = GuestBooking.Event.EventName;
+            ViewData["GuestId"] = new SelectList(_context.Guests, "GuestId", "GuestName");
             return Page();
         }
 
@@ -39,7 +46,7 @@ namespace ThAmCo.Events.Pages.GuestBookingList
             _context.GuestBookings.Add(GuestBooking);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/EventList/Guests", new { id = GuestBooking.EventId });
         }
     }
 }

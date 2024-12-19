@@ -47,4 +47,5 @@
 }
     </tbody>
 </table>
-<a asp-page="/EventList/Index">Back to List</a> | <a asp-page="Add">Add Staff to Event</a>
+<a asp-page="/EventList/Index">Back to List</a> | 
+<a asp-page="Add" asp-route-id="@Model.Staffing.FirstOrDefault()?.EventId">Add Staff to this Event</a>

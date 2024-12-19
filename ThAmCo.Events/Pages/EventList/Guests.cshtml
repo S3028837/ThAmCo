@@ -33,32 +33,33 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.GuestBooking) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Attendance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Event.EventName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Guest.GuestName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Guest.GuestEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Guest.GuestPhone)
-            </td>
-            <td>
+        @foreach (var item in Model.GuestBooking) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attendance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event.EventName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest.GuestName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest.GuestEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest.GuestPhone)
+                </td>
+                <td>
                     <a asp-page="./Register" asp-route-id="@item.GuestBookingId">Attended</a> |
                     <a asp-page="/GuestBookingList/Delete" asp-route-id="@item.GuestBookingId">Cancel</a>
-            </td>
-        </tr>
-}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Back to List</a> |
+    <a asp-page="/GuestBookingList/Create" asp-route-id="@Model.GuestBooking.FirstOrDefault()?.Event.EventId">Book a Guest onto this Event</a>
 </div>
